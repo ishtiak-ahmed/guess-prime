@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <unistd.h>
 #include <math.h>  
 
 bool isPrime(int a){
@@ -14,29 +15,39 @@ bool isPrime(int a){
 
 void gameIntro(){
   printf("Welcome to PRIME number guessing game.\n");
+  sleep(1);
   printf("I hope you already know what is a Prime number.\n\n");
+  sleep(2);
   printf("Here is a quick reminder, \"Prime number is a positive integer number,\n");
+  sleep(2);
   printf("which can only be divisible by 1 and the number itself.\n");
   printf("2, 3 are the first 2 prime number. But 4 is not a prime number.\n");
   printf("Because 4 can be divisible by 2.\n\n");
+  sleep(10);
   printf("In this game, you have to guess 10 prime number between 2000 to 7000.\n");
   printf("If you guess 5+ prime number correctly, you win.\n");
   printf("\n");
+  sleep(5);
   printf("Without any further ado, Let's start the game!\n\n");
+  sleep(2);
 }
 
 void gameOutro(){
   printf("\nThanks for playing the game.\n");
+  sleep(2);
   printf("This command line game is Build with C programming language\nby Ishtiak Ahmed (https://github.com/ishtiak-ahmed)\n");
+  sleep(2);
 }
 
 void congratsWinner(int correctGuess){
-  printf("\nCongratulations! You guessed %d prime number correctly of 10!\n", correctGuess);
+  printf("\nCongratulations! You guessed %d prime number correctly out of 10!\n", correctGuess);
   printf("\n");
+  sleep(2);
 }
 
 void losingMessage(int correctGuess){
-  printf("\nYou guessed %d correctly out of 10\nBetter luck next time\n", correctGuess);
+  printf("\nYou guessed %d number correctly out of 10\nBetter luck next time\n", correctGuess);
+  sleep(5);
 }
 
 int main(void){
@@ -50,9 +61,9 @@ int main(void){
     // scanf("%d", &n);
     if (scanf("%d", &n) != 1)
     {
-      printf("This is not a number.\n");
+      printf("\nThis is not a number.\n");
       n = 0;
-      continue;
+      break;
     }
     if(n < 2000 || n > 7000){
       printf("%d is not in the range of 2000 to 7000\n", n);
@@ -80,6 +91,8 @@ int main(void){
       printf("Incorrect! %d is not a Prime number\n", n);
     }
     guessUsed++;
+    printf("\n");
+    sleep(1);
   }
   if(correctGuess >= 5){
     congratsWinner(correctGuess);
